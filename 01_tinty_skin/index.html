@@ -264,21 +264,21 @@ ul{list-style:none}
 /* =====================================================================
    #signature — SIGNATURE SET
    ===================================================================== */
-/* 풀블리드 이미지 배너 + 좌측 텍스트 오버레이 (밝은 제품컷 → 어두운 텍스트) */
-.signature{position:relative;min-height:580px;display:flex;align-items:center;overflow:hidden;background:var(--bg-soft)}
-.signature>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% center}
-/* 좌측에 밝은 스크림을 깔아 어두운 텍스트 가독성 확보 */
-.signature::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(245,242,236,.92) 0%,rgba(245,242,236,.6) 32%,rgba(245,242,236,0) 60%)}
-.signature__inner{position:relative;z-index:2;width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--pad-x)}
-.signature__text{max-width:460px}
+/* 좌측 텍스트 + 우측 이미지 분할 레이아웃 (2단 그리드) */
+.signature{background:var(--bg-soft)}
+.signature__inner{width:100%;max-width:var(--maxw);margin:0 auto;padding:var(--section-gap) var(--pad-x);display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(32px,5vw,72px);align-items:center}
+.signature__text{max-width:480px}
 .signature__text .eyebrow{font-family:"Archivo",sans-serif;font-size:var(--fs-cap);letter-spacing:.18em;color:var(--color-sub);text-transform:uppercase}
 .signature__text h2{font-size:var(--fs-h2);font-weight:var(--fw-h2);line-height:1.15;margin:16px 0 18px;letter-spacing:-.01em}
 .signature__text p{color:#5f5f5f;max-width:400px;margin-bottom:30px}
+.signature__media{border-radius:var(--radius);overflow:hidden;background:#fff;box-shadow:0 18px 50px rgba(0,0,0,.08)}
+.signature__media img{width:100%;height:auto;display:block;transition:transform .6s ease}
+.signature__media:hover img{transform:scale(1.04)}
 
 /* =====================================================================
    #story — 스토리 배너(풀폭)
    ===================================================================== */
-.story{position:relative;height:520px;margin-top:84px;overflow:hidden}
+.story{position:relative;height:520px;margin-top:0;overflow:hidden}
 .story video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 
 /* =====================================================================
@@ -395,13 +395,13 @@ ul{list-style:none}
   .hero .swiper{height:auto;min-height:0;aspect-ratio:3/4;max-height:80vh}
   .hero-text{max-width:none}
   .hero-text p{font-size:14px}
-  .signature{min-height:440px}
-  .signature::before{background:linear-gradient(90deg,rgba(245,242,236,.96) 0%,rgba(245,242,236,.72) 46%,rgba(245,242,236,.12) 100%)}
+  .signature__inner{grid-template-columns:1fr;gap:28px}
+  .signature__media{order:-1}
   .prod-grid--3{grid-template-columns:repeat(2,1fr)}
   .look-grid{grid-template-columns:1fr;gap:16px}
   .look-card{aspect-ratio:4/3}
   .gallery-grid{grid-template-columns:repeat(2,1fr)}
-  .story{height:380px;margin-top:48px}
+  .story{height:380px;margin-top:0}
   .ribbon{height:300px}
   .sec-head{margin-bottom:32px}
   .ribbon--lime .ribbon__inner{flex-direction:column;align-items:flex-start;text-align:left}
@@ -427,7 +427,7 @@ ul{list-style:none}
       <a href="products.html">SHOP</a>
       <a href="products.html">COLLECTION</a>
       <a href="products.html">NEW</a>
-      <a href="#">JOURNAL</a>
+      <a href="board.html">NOTICE</a>
       <a href="#">BRAND</a>
     </nav>
 
@@ -435,6 +435,7 @@ ul{list-style:none}
     <div class="header-util">
       <button type="button" aria-label="검색"><i class="fa-solid fa-magnifying-glass"></i></button>
       <a href="login.html" aria-label="계정/로그인"><i class="fa-regular fa-user"></i></a>
+      <a href="wishlist.html" aria-label="관심상품"><i class="fa-regular fa-heart"></i></a>
       <a href="cart.html" aria-label="장바구니">
         <i class="fa-solid fa-bag-shopping"></i>
         <span class="cart-count">2</span>
@@ -450,7 +451,7 @@ ul{list-style:none}
     <a href="products.html">SHOP</a>
     <a href="products.html">COLLECTION</a>
     <a href="products.html">NEW</a>
-    <a href="#">JOURNAL</a>
+    <a href="board.html">NOTICE</a>
     <a href="#">BRAND</a>
   </nav>
 </header>
@@ -475,7 +476,7 @@ ul{list-style:none}
 
         <!-- 슬라이드 1 -->
         <div class="swiper-slide hero-slide">
-          <img src="../assets/images/tinty/hero-main-model.webp" alt="틴티 선글라스를 착용한 메인 모델" width="1920" height="1080">
+          <img src="assets/images/tinty/hero-main-model.webp" alt="틴티 선글라스를 착용한 메인 모델" width="1920" height="1080">
           <div class="hero-text"><div class="inner">
             <span class="tag">NEW SUMMER</span>
             <h1>컬러로 완성하는<br>나만의 <span class="hl">스타일!</span></h1>
@@ -486,7 +487,7 @@ ul{list-style:none}
 
         <!-- 슬라이드 2 -->
         <div class="swiper-slide hero-slide">
-          <img src="../assets/images/tinty/campaign-two-models.webp" alt="두 명의 모델이 컬러 선글라스를 착용한 캠페인 컷" width="1920" height="1080">
+          <img src="assets/images/tinty/campaign-two-models.webp" alt="두 명의 모델이 컬러 선글라스를 착용한 캠페인 컷" width="1920" height="1080">
           <div class="hero-text"><div class="inner">
             <span class="tag">COLOR PLAY</span>
             <h1>다섯 가지 컬러,<br>다섯 가지 <span class="hl">기분</span></h1>
@@ -497,7 +498,7 @@ ul{list-style:none}
 
         <!-- 슬라이드 3 -->
         <div class="swiper-slide hero-slide">
-          <img src="../assets/images/tinty/collection-color-flatlay.webp" alt="컬러별 선글라스 플랫레이" width="1920" height="1080">
+          <img src="assets/images/tinty/collection-color-flatlay.webp" alt="컬러별 선글라스 플랫레이" width="1920" height="1080">
           <div class="hero-text"><div class="inner">
             <span class="tag">NEW ARRIVALS</span>
             <h1>톡 쏘는 신상,<br>지금 막 <span class="hl">입고!</span></h1>
@@ -523,13 +524,15 @@ ul{list-style:none}
        #signature — SIGNATURE SET
        ===================================================================== -->
   <section id="signature" class="signature" aria-label="시그니처 세트">
-    <img src="../assets/images/tinty/signature-set.webp" alt="틴티 시그니처 세트 패키지" loading="lazy" width="1672" height="941">
     <div class="signature__inner">
       <div class="signature__text reveal">
         <span class="eyebrow">Signature Set</span>
         <h2>매일 쓰고 싶은,<br>아이코닉 컬렉션</h2>
         <p>틴티가 제안하는 컬러 조합, 박스째 선물하기 좋은 시그니처 구성</p>
         <a class="btn btn--dark" href="products.html">SHOP SET <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="signature__media reveal" style="--d:.08s">
+        <img src="assets/images/tinty/signature-set.webp" alt="틴티 시그니처 세트 패키지" loading="lazy" width="1672" height="941">
       </div>
     </div>
   </section>
@@ -539,8 +542,8 @@ ul{list-style:none}
        ===================================================================== -->
   <section id="story" class="story" aria-label="브랜드 스토리 영상">
     <video autoplay muted loop playsinline preload="metadata"
-           poster="../assets/images/tinty/story-banner-lavender.webp">
-      <source src="../assets/videos/story-banner.mp4" type="video/mp4">
+           poster="assets/images/tinty/story-banner-lavender.webp">
+      <source src="assets/videos/story-banner.mp4" type="video/mp4">
     </video>
   </section>
 
@@ -562,7 +565,7 @@ ul{list-style:none}
         <!-- 1 -->
         <li class="item reveal">
           <a class="item__thumb" href="product-detail.html">
-            <img src="../assets/images/tinty/product-red-rectangular.webp" alt="RED / BLACK LENS 선글라스" loading="lazy" width="600" height="600">
+            <img src="assets/images/tinty/product-red-rectangular.webp" alt="RED / BLACK LENS 선글라스" loading="lazy" width="600" height="600">
             <button class="item__wish" type="button" aria-label="찜하기"><i class="fa-regular fa-heart"></i></button>
           </a>
           <div class="item__info">
@@ -574,7 +577,7 @@ ul{list-style:none}
         <!-- 2 -->
         <li class="item reveal" style="--d:.1s">
           <a class="item__thumb" href="product-detail.html">
-            <img src="../assets/images/tinty/product-purple-oval.webp" alt="JANE PURPLE 선글라스" loading="lazy" width="600" height="600">
+            <img src="assets/images/tinty/product-purple-oval.webp" alt="JANE PURPLE 선글라스" loading="lazy" width="600" height="600">
             <span class="badge badge--new">NEW</span>
             <button class="item__wish" type="button" aria-label="찜하기"><i class="fa-regular fa-heart"></i></button>
           </a>
@@ -587,7 +590,7 @@ ul{list-style:none}
         <!-- 3 -->
         <li class="item reveal" style="--d:.2s">
           <a class="item__thumb" href="product-detail.html">
-            <img src="../assets/images/tinty/product-honey-oval.webp" alt="HONEY TEA / BROWN 선글라스" loading="lazy" width="600" height="600">
+            <img src="assets/images/tinty/product-honey-oval.webp" alt="HONEY TEA / BROWN 선글라스" loading="lazy" width="600" height="600">
             <button class="item__wish" type="button" aria-label="찜하기"><i class="fa-regular fa-heart"></i></button>
           </a>
           <div class="item__info">
@@ -604,7 +607,7 @@ ul{list-style:none}
        #banner1 — 띠배너 1
        ===================================================================== -->
   <section id="banner1" class="ribbon reveal" aria-label="여름 컬렉션 배너">
-    <img src="../assets/images/tinty/collection-color-flatlay.webp" alt="2024 여름 컬러 컬렉션 플랫레이" loading="lazy" width="1920" height="360">
+    <img src="assets/images/tinty/collection-color-flatlay.webp" alt="2024 여름 컬러 컬렉션 플랫레이" loading="lazy" width="1920" height="360">
     <div class="ribbon__text">
       <span class="eyebrow">NEW · 2024 SUMMER COLLECTION</span>
       <h2>여름을 더 특별하게<br><span class="hl">컬러 플레이</span> 컬렉션!</h2>
@@ -627,7 +630,7 @@ ul{list-style:none}
 
       <div class="look-grid">
         <article class="look-card reveal">
-          <img src="../assets/images/tinty/lookbook-lime-studio.webp" alt="스튜디오 라임 룩북 컷" loading="lazy" width="600" height="800">
+          <img src="assets/images/tinty/lookbook-lime-studio.webp" alt="스튜디오 라임 룩북 컷" loading="lazy" width="600" height="800">
           <div class="look-card__cap">
             <h3>STUDIO LIME</h3>
             <p>스튜디오 조명 아래 가장 또렷한 라임</p>
@@ -635,7 +638,7 @@ ul{list-style:none}
           </div>
         </article>
         <article class="look-card reveal" style="--d:.1s">
-          <img src="../assets/images/tinty/lookbook-honey-picnic.webp" alt="허니 피크닉 룩북 컷" loading="lazy" width="600" height="800">
+          <img src="assets/images/tinty/lookbook-honey-picnic.webp" alt="허니 피크닉 룩북 컷" loading="lazy" width="600" height="800">
           <div class="look-card__cap">
             <h3>HONEY PICNIC</h3>
             <p>햇살 좋은 오후, 허니빛 피크닉</p>
@@ -643,7 +646,7 @@ ul{list-style:none}
           </div>
         </article>
         <article class="look-card reveal" style="--d:.2s">
-          <img src="../assets/images/tinty/lookbook-package-set.webp" alt="틴티 기프트 패키지 룩북 컷" loading="lazy" width="600" height="800">
+          <img src="assets/images/tinty/lookbook-package-set.webp" alt="틴티 기프트 패키지 룩북 컷" loading="lazy" width="600" height="800">
           <div class="look-card__cap">
             <h3>GIFT READY</h3>
             <p>그대로 선물이 되는 틴티 패키지</p>
@@ -672,7 +675,7 @@ ul{list-style:none}
         <!-- 1 -->
         <li class="item reveal">
           <a class="item__thumb" href="product-detail.html">
-            <img src="../assets/images/tinty/arrival-purple-hinge-detail.webp" alt="LILAC CHILL 선글라스" loading="lazy" width="600" height="600">
+            <img src="assets/images/tinty/arrival-purple-hinge-detail.webp" alt="LILAC CHILL 선글라스" loading="lazy" width="600" height="600">
             <span class="badge badge--new">NEW</span>
             <button class="item__wish" type="button" aria-label="찜하기"><i class="fa-regular fa-heart"></i></button>
           </a>
@@ -685,7 +688,7 @@ ul{list-style:none}
         <!-- 2 -->
         <li class="item reveal" style="--d:.08s">
           <a class="item__thumb" href="product-detail.html">
-            <img src="../assets/images/tinty/arrival-lime-model-card.webp" alt="LIME PUNCH 선글라스" loading="lazy" width="600" height="600">
+            <img src="assets/images/tinty/arrival-lime-model-card.webp" alt="LIME PUNCH 선글라스" loading="lazy" width="600" height="600">
             <span class="badge badge--new">NEW</span>
             <button class="item__wish" type="button" aria-label="찜하기"><i class="fa-regular fa-heart"></i></button>
           </a>
@@ -698,7 +701,7 @@ ul{list-style:none}
         <!-- 3 -->
         <li class="item reveal" style="--d:.16s">
           <a class="item__thumb" href="product-detail.html">
-            <img src="../assets/images/tinty/arrival-honey-mango-linen.webp" alt="MANGO DAY 선글라스" loading="lazy" width="600" height="600">
+            <img src="assets/images/tinty/arrival-honey-mango-linen.webp" alt="MANGO DAY 선글라스" loading="lazy" width="600" height="600">
             <span class="badge badge--new">NEW</span>
             <button class="item__wish" type="button" aria-label="찜하기"><i class="fa-regular fa-heart"></i></button>
           </a>
@@ -711,7 +714,7 @@ ul{list-style:none}
         <!-- 4 -->
         <li class="item reveal" style="--d:.24s">
           <a class="item__thumb" href="product-detail.html">
-            <img src="../assets/images/tinty/arrival-lime-purple-tray.webp" alt="GRAPE SODA 선글라스" loading="lazy" width="600" height="600">
+            <img src="assets/images/tinty/arrival-lime-purple-tray.webp" alt="GRAPE SODA 선글라스" loading="lazy" width="600" height="600">
             <span class="badge badge--new">NEW</span>
             <button class="item__wish" type="button" aria-label="찜하기"><i class="fa-regular fa-heart"></i></button>
           </a>
@@ -749,17 +752,17 @@ ul{list-style:none}
       </div>
 
       <div class="gallery-grid reveal">
-        <a class="gallery-cell" href="#"><img src="../assets/images/tinty/gallery-red-cafe.webp" alt="카페에서 레드 선글라스" loading="lazy" width="400" height="400"></a>
-        <a class="gallery-cell" href="#"><img src="../assets/images/tinty/gallery-purple-street.webp" alt="거리에서 퍼플 선글라스" loading="lazy" width="400" height="400"></a>
-        <a class="gallery-cell" href="#"><img src="../assets/images/tinty/gallery-red-honey-flatlay.webp" alt="레드·허니 플랫레이" loading="lazy" width="400" height="400"></a>
-        <a class="gallery-cell" href="#"><img src="../assets/images/tinty/gallery-box-lime-purple.webp" alt="라임·퍼플 박스" loading="lazy" width="400" height="400"></a>
-        <a class="gallery-cell" href="#"><img src="../assets/images/tinty/gallery-beauty-honey-bubble.webp" alt="허니 뷰티 버블 컷" loading="lazy" width="400" height="400"></a>
+        <a class="gallery-cell" href="#"><img src="assets/images/tinty/gallery-red-cafe.webp" alt="카페에서 레드 선글라스" loading="lazy" width="400" height="400"></a>
+        <a class="gallery-cell" href="#"><img src="assets/images/tinty/gallery-purple-street.webp" alt="거리에서 퍼플 선글라스" loading="lazy" width="400" height="400"></a>
+        <a class="gallery-cell" href="#"><img src="assets/images/tinty/gallery-red-honey-flatlay.webp" alt="레드·허니 플랫레이" loading="lazy" width="400" height="400"></a>
+        <a class="gallery-cell" href="#"><img src="assets/images/tinty/gallery-box-lime-purple.webp" alt="라임·퍼플 박스" loading="lazy" width="400" height="400"></a>
+        <a class="gallery-cell" href="#"><img src="assets/images/tinty/gallery-beauty-honey-bubble.webp" alt="허니 뷰티 버블 컷" loading="lazy" width="400" height="400"></a>
         <!-- 부족분: 룩북/어라이벌 이미지 재사용으로 그리드 채움(총 10칸) -->
-        <a class="gallery-cell" href="#"><img src="../assets/images/tinty/lookbook-lime-studio.webp" alt="스튜디오 라임 컷" loading="lazy" width="400" height="400"></a>
-        <a class="gallery-cell" href="#"><img src="../assets/images/tinty/arrival-lime-model-card.webp" alt="라임 펀치 컷" loading="lazy" width="400" height="400"></a>
-        <a class="gallery-cell" href="#"><img src="../assets/images/tinty/lookbook-honey-picnic.webp" alt="허니 피크닉 컷" loading="lazy" width="400" height="400"></a>
-        <a class="gallery-cell" href="#"><img src="../assets/images/tinty/arrival-honey-mango-linen.webp" alt="망고 데이 컷" loading="lazy" width="400" height="400"></a>
-        <a class="gallery-cell" href="#"><img src="../assets/images/tinty/arrival-lime-purple-tray.webp" alt="그레이프 소다 트레이 컷" loading="lazy" width="400" height="400"></a>
+        <a class="gallery-cell" href="#"><img src="assets/images/tinty/lookbook-lime-studio.webp" alt="스튜디오 라임 컷" loading="lazy" width="400" height="400"></a>
+        <a class="gallery-cell" href="#"><img src="assets/images/tinty/arrival-lime-model-card.webp" alt="라임 펀치 컷" loading="lazy" width="400" height="400"></a>
+        <a class="gallery-cell" href="#"><img src="assets/images/tinty/lookbook-honey-picnic.webp" alt="허니 피크닉 컷" loading="lazy" width="400" height="400"></a>
+        <a class="gallery-cell" href="#"><img src="assets/images/tinty/arrival-honey-mango-linen.webp" alt="망고 데이 컷" loading="lazy" width="400" height="400"></a>
+        <a class="gallery-cell" href="#"><img src="assets/images/tinty/arrival-lime-purple-tray.webp" alt="그레이프 소다 트레이 컷" loading="lazy" width="400" height="400"></a>
       </div>
     </div>
   </section>
@@ -798,10 +801,10 @@ ul{list-style:none}
       </div>
       <div class="footer-col">
         <h4>Customer</h4>
-        <a href="#">공지사항</a>
+        <a href="board.html">공지사항</a>
         <a href="#">자주 묻는 질문</a>
         <a href="#">배송/교환/반품</a>
-        <a href="#">1:1 문의</a>
+        <a href="board-write.html">1:1 문의</a>
       </div>
     </div>
     <div class="footer-bottom">

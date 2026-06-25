@@ -322,6 +322,10 @@ ul{list-style:none}
   background:var(--point);color:var(--point-ink);padding:4px 10px;border-radius:5px;
 }
 
+/* 글쓰기 버튼 행 */
+.board-write-row{display:flex;justify-content:flex-end;margin-top:20px}
+.board-write-row .btn i{font-size:12px}
+
 /* 페이지네이션 */
 .board-pagination{display:flex;justify-content:center;align-items:center;gap:6px;margin-top:40px}
 .board-pagination a{
@@ -364,7 +368,7 @@ ul{list-style:none}
       <a href="products.html">SHOP</a>
       <a href="products.html">COLLECTION</a>
       <a href="products.html">NEW</a>
-      <a href="#">JOURNAL</a>
+      <a href="board.html">NOTICE</a>
       <a href="#">BRAND</a>
     </nav>
 
@@ -372,6 +376,7 @@ ul{list-style:none}
     <div class="header-util">
       <button type="button" aria-label="검색"><i class="fa-solid fa-magnifying-glass"></i></button>
       <a href="login.html" aria-label="계정/로그인"><i class="fa-regular fa-user"></i></a>
+      <a href="wishlist.html" aria-label="관심상품"><i class="fa-regular fa-heart"></i></a>
       <a href="cart.html" aria-label="장바구니">
         <i class="fa-solid fa-bag-shopping"></i>
         <span class="cart-count">2</span>
@@ -387,7 +392,7 @@ ul{list-style:none}
     <a href="products.html">SHOP</a>
     <a href="products.html">COLLECTION</a>
     <a href="products.html">NEW</a>
-    <a href="#">JOURNAL</a>
+    <a href="board.html">NOTICE</a>
     <a href="#">BRAND</a>
   </nav>
 </header>
@@ -526,6 +531,11 @@ ul{list-style:none}
           </tr>
         </tbody>
       </table>
+
+      <!-- 글쓰기 버튼 -->
+      <div class="board-write-row reveal">
+        <a class="btn" href="board-write.html"><i class="fa-solid fa-pen"></i> 글쓰기</a>
+      </div>
 
       <!-- 페이지네이션 -->
       <nav class="board-pagination reveal" aria-label="페이지 이동">
